@@ -1,0 +1,35 @@
+<!-- formulario List-bicis -->
+<div class="table-margin">
+  <h1 class="center-forms">Lista de Bicicletas</h1>
+  <br>
+  <button class="btn btn-primary mb-3" [routerLink]="['/bicis/new']">Crear Bicicleta</button>
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">color</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Ubicación</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Detalles</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bici of listBicis">
+        <th scope="row">{{bici.biciID}}</th>
+        <td>{{bici.color}}</td>
+        <td>{{bici.modelo}}</td>
+        <td>{{bici.long}},{{bici.lat}}</td>
+        <td class="text-center px-1">
+          <div class="text-clickeable" *ngIf="!bici.userId" (click)="seleccionarBici(bici._id)">Disponible</div>
+          <div class="text-clickeable" *ngIf="bici.userId" (click)="unSeleccionarBici(bici._id)">No disponible</div>
+        </td>
+        <td class="text-clickeable" [routerLink]="['/bicis/', bici._id, 'details']">Details</td>
+        <td class="text-clickeable" [routerLink]="['/bicis/', bici._id, 'update']">Update</td>
+        <td class="text-clickeable" (click)="deleteBici(bici._id)">Eliminar</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
