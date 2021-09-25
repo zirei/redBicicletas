@@ -1,0 +1,31 @@
+<!-- Formulario details-bici -->
+<div class="container-new-bici">
+  <h1 class="center-forms">Mostrar Bicileta</h1>
+  <br>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-id">ID</span>
+    <span type="text" class="form-control" aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-default" disabled> {{bici.biciID}} </span>
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-id">Color</span>
+    <span type="text" class="form-control" aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-default" disabled> {{bici.color}} </span>
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-id">Modelo</span>
+    <span type="text" class="form-control" aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-default" disabled> {{bici.modelo}} </span>
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-lat">Latitud</span>
+    <span type="text" class="form-control" aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-default" disabled> {{bici.lat}} </span>
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-long">Longitud</span>
+    <span type="text" class="form-control" aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-default" disabled> {{bici.long}} </span>
+  </div>
+  <button class="btn btn-primary mb-3" [routerLink]="['/bicis/']">Regresar</button>
+</div>
