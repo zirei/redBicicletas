@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Bici } from 'src/app/core/models/bici.model';
+import { AuthenticationService } from 'src/app/core/services/authentication/authentication.service';
 import { BiciService } from 'src/app/core/services/bici/bici.service';
 
 @Component({
@@ -10,13 +11,30 @@ import { BiciService } from 'src/app/core/services/bici/bici.service';
 export class ListBicisComponent implements OnInit {
 
   listBicis: any[];
+  user: any;
+  isLogin: boolean = false;
   
-  constructor(private biciService: BiciService) {
+  constructor(
+    private biciService: BiciService,
+    private authService: AuthenticationService,
+  ) {
     this.listBicis = []
+    this.getUserStatus();
   }
 
   ngOnInit(): void {
     this.getBicis()
+  }
+  getUserStatus() {
+    this.authService.getUserStatus().subscribe((user) => {
+      if (user) {
+        this.user = Object(user.multiFactor).user;
+        console.log("list ->", user);
+        this.isLogin = true
+      } else {
+        this.isLogin = false
+      }
+    })
   }
 
   getBicis() {
@@ -24,6 +42,12 @@ export class ListBicisComponent implements OnInit {
       this.listBicis = data.body
       console.log(this.listBicis)
     })
+  }
+  seleccionarBici(biciID: any){
+    console.log("name ->",this.user.displayName);
+  }
+  unSeleccionarBici(biciID: any){
+    console.log("name ->",this.user.displayName);
   }
 
   deleteBici(biciID: any) {

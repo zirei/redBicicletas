@@ -7,7 +7,8 @@
     <div class="col-lg-5">
       <h1 class="font-weight-light">Red de Bicicletas</h1>
       <p>Primer red de Bicicleteros Urbanos, Inscribete y disfruta</p>
-      <a class="btn btn-primary" href="#!">Inscribete aquí</a>
+      <a class="btn btn-primary" (click)="logIn()" *ngIf="!isLogin">Iniciar sesión con google</a>
+      <a class="btn btn-primary" (click)="logOut()" *ngIf="isLogin">Cerrar Sesión</a>
     </div>
   </div>
   <!-- Call to Action-->

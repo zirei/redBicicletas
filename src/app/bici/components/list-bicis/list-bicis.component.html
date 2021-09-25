@@ -23,8 +23,8 @@
         <td>{{bici.modelo}}</td>
         <td>{{bici.long}},{{bici.lat}}</td>
         <td class="text-center px-1">
-          <div *ngIf="!bici.userId">Disponible</div>
-          <div *ngIf="bici.userId">No disponible</div>
+          <div class="text-clickeable" *ngIf="!bici.userId" (click)="seleccionarBici(bici._id)">Disponible</div>
+          <div class="text-clickeable" *ngIf="bici.userId" (click)="unSeleccionarBici(bici._id)">No disponible</div>
         </td>
         <td class="text-clickeable" [routerLink]="['/bicis/', bici._id, 'details']">Details</td>
         <td class="text-clickeable" [routerLink]="['/bicis/', bici._id, 'update']">Update</td>

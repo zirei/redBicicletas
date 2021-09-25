@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "redbicis-18118": {
+      "hosting": {
+        "redBicicletas": [
+          "redbicis-18118"
+        ]
+      }
+    }
+  }
+}
