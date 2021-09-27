@@ -59,7 +59,6 @@ export class UpdateBiciComponent implements OnInit {
   getBiciID() {
     this.route.params.subscribe((params: Params) => {
       this.biciID = params.id;
-      console.log("update", params)
       this.getBici();
 
     });
@@ -67,7 +66,7 @@ export class UpdateBiciComponent implements OnInit {
   getBici() {
     this.biciService.readById(this.biciID).subscribe((bici) => {
       this.bici = bici.body[0];
-      console.log("update2", bici)
+
     })
   }
   updateBici() {

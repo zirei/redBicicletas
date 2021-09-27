@@ -24,7 +24,7 @@ L.Marker.prototype.options.icon = iconDefault;
 })
 export class MapComponent implements AfterViewInit {
 
-  @Input() myPoints: any[] = [];
+  @Input() myLocation: any[] = [];
   private map: any;
 
   private initMap(): void {
@@ -54,8 +54,9 @@ export class MapComponent implements AfterViewInit {
   }
 
   addMarkers() {
-    this.myPoints.map((point) => {
-      this.addMarker(point.latitude, point.longitude)
+    this.myLocation.map((point) => {
+      alert(point.long)
+      this.addMarker(point.lat, point.long)
     })
   }
 }

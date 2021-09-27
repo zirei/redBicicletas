@@ -6,7 +6,6 @@ import * as L from 'leaflet';
   providedIn: 'root'
 })
 export class MarkerService {
-  capitals: string = '/assets/data/usa-capitals.geojson';
 
   constructor(private http: HttpClient) {
   }
