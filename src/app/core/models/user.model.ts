@@ -1,8 +1,6 @@
 export interface User {
-  nombre: String;
-  userID: String;
-  cc: String;
-  correo: String;
-  celular: String;
-  Administrador: Boolean;
+  userID?: String,
+  _id?: String;
+  name?: String,
+  biciID?: String
 }

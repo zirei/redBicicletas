@@ -5,6 +5,8 @@
 export const environment = {
   production: false,
   biciApi: 'http://localhost:3000',
+  userApi: 'http://localhost:3001',
+  geoApi: 'http://localhost:3002',
   firebaseConfig : {
   apiKey: "AIzaSyArwXcrwqn1wIvnkcrWV6cfBLLRdXkPlfA",
   authDomain: "redbicis-18118.firebaseapp.com",

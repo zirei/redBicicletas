@@ -20,8 +20,8 @@ RUN npm install
 COPY . /app/
 
 ENV NODE_ENV QA
-ENV PORT 8083
+ENV PORT 8082
 
-EXPOSE 8083
+EXPOSE 8082
 
 CMD [ "node", "server.js" ]

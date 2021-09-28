@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Bici } from 'src/app/core/models/bici.model';
+import { Geo } from 'src/app/core/models/geo.model';
 import { BiciService } from 'src/app/core/services/bici/bici.service';
+import { GeoService } from 'src/app/core/services/geo/geo.service';
 
 @Component({
   selector: 'app-update-bici',
@@ -11,6 +13,8 @@ import { BiciService } from 'src/app/core/services/bici/bici.service';
 export class UpdateBiciComponent implements OnInit {
   bici: Bici;
   biciID: String;
+  geo: Geo;
+
   colors: any[] = [
     {
       text: 'Blanco'
@@ -41,7 +45,8 @@ export class UpdateBiciComponent implements OnInit {
   ]
   constructor(
     private route: ActivatedRoute,
-    private biciService: BiciService 
+    private biciService: BiciService,
+    private geoService: GeoService
   ) {
     this.bici = {
       biciID: '',
@@ -49,7 +54,12 @@ export class UpdateBiciComponent implements OnInit {
       modelo: '',
       lat: 0,
       long: 0,
-    }
+    },
+    this.geo = {
+      biciID: '',
+      lat: 0,
+      long: 0,
+    },
     this.biciID = ''
   }
 
@@ -59,7 +69,6 @@ export class UpdateBiciComponent implements OnInit {
   getBiciID() {
     this.route.params.subscribe((params: Params) => {
       this.biciID = params.id;
-      console.log("update", params)
       this.getBici();
 
     });
@@ -67,12 +76,13 @@ export class UpdateBiciComponent implements OnInit {
   getBici() {
     this.biciService.readById(this.biciID).subscribe((bici) => {
       this.bici = bici.body[0];
-      console.log("update2", bici)
+
     })
   }
   updateBici() {
     this.biciService.update(this.bici).subscribe(() => {
       alert(`Bicicleta ${this.bici.biciID} actualizada con éxito`)
     })
+    this.geoService.update(this.bici).subscribe(() => {})
   }
 }
