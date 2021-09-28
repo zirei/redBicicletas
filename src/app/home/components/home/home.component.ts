@@ -43,6 +43,13 @@ export class HomeComponent implements OnInit {
       this.bicis = data.body
       console.log("bicis ->", this.bicis)      
     })
+    if(this.bicis.length >0){
+    }else{
+      this.localizationService.readGeo().subscribe((data) => {
+        this.bicis = data.body
+        console.log("bicis ->", this.bicis)      
+      })
+    }
   }
 
   logIn() {

@@ -13,4 +13,8 @@ export class LocalizacionService {
     console.log("i{m here")
     return this.http.get<any>(`${environment.biciApi}/bicicleta`);
   }
+  readGeo() {
+    console.log("i{m GEOOO")
+    return this.http.get<any>(`${environment.geoApi}/rbgeoback`);
+  }
 }
