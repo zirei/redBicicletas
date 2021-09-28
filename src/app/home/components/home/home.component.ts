@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/core/services/authentication/authentication.service';
 import { LocalizacionService } from 'src/app/core/services/localizacion/localizacion.service';
@@ -12,6 +13,7 @@ export class HomeComponent implements OnInit {
   isLogin: boolean = false
   bicis: any[] = []
   user: any;
+  currentUser: any;
   
   constructor(
     private localizationService: LocalizacionService,
@@ -27,6 +29,7 @@ export class HomeComponent implements OnInit {
     this.authService.getUserStatus().subscribe((user) => {
       if (user) {
         this.user = Object(user.multiFactor).user;
+        this.currentUser = user.displayName;
         console.log(user);
         this.isLogin = true
       } else {
@@ -36,19 +39,23 @@ export class HomeComponent implements OnInit {
   }
 
   getBicis() {
-    this.localizationService.read().subscribe((data: any) => {
+    this.localizationService.read().subscribe((data) => {
       this.bicis = data.body
-      console.log(this.bicis)
+      console.log("bicis ->", this.bicis)      
     })
   }
 
   logIn() {
     this.authService.login();
+    alert(`Bienvenido: ${this.currentUser}`)
   }
 
   logOut() {
+    alert(`Hasta Pronto: ${this.currentUser}`)
     this.authService.logout();
     this.user = ''
   }
+  // makeMarkers(map: any, lat: any, lon: any): void {
+
 
 }

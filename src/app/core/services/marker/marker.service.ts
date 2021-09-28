@@ -10,7 +10,7 @@ export class MarkerService {
   constructor(private http: HttpClient) {
   }
 
-  makeMarkers(map: any, lat: number, lon: number): void {
+  makeMarkers(map: any, lat: any, lon: any): void {
     const marker = L.marker([lat, lon]);
     marker.addTo(map);
   }

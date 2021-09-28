@@ -40,6 +40,7 @@ export class MapComponent implements AfterViewInit {
     });
 
     tiles.addTo(this.map);
+    console.log("i{m here addmarkers")
     this.addMarkers()
   }
 
@@ -49,13 +50,13 @@ export class MapComponent implements AfterViewInit {
     this.initMap();
   }
   
-  addMarker(lat: number, long: number) {
+  addMarker(lat: any, long: any) {
     this.markerService.makeMarkers(this.map, lat, long);
   }
 
   addMarkers() {
+    console.log("addmarkers 13123", this.myLocation)
     this.myLocation.map((point) => {
-      alert(point.long)
       this.addMarker(point.lat, point.long)
     })
   }
